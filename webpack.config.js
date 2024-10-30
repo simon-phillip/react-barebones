@@ -1,9 +1,14 @@
 const path = require('path')
 
 module.exports = {
- entry: './src/index.js',
+ entry: './src/index.tsx',
  module: {
    rules: [
+     {
+       test: /\.(ts|tsx)$/,
+       use: 'ts-loader',
+       exclude: /node_modules/
+     },
      {
        test: /\.(js|jsx)$/,
        exclude: /node_modules/,
@@ -28,7 +33,7 @@ module.exports = {
    ]
  },
  resolve: {
-   extensions: ['*', '.js', '.jsx']
+   extensions: ['.tsx', '.ts', '.js', '.jsx']
  },
  output: {
    path: __dirname + '/dist',
