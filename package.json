@@ -1,13 +1,18 @@
 {
   "name": "webflow-blog",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/bundle.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --config ./webpack.config.js --mode development --progress --color --port 3000",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production && npm run build:types",
+    "build:types": "tsc --emitDeclarationOnly"
   },
   "homepage": "https://simon-phillip.github.io/webflow-blog",
   "author": "",

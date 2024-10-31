@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-interface PromoBannerProps {
+export interface PromoBannerProps {
   defaultPromoCode?: string;
 }
 
@@ -22,8 +22,14 @@ const PromoBanner: React.FC<PromoBannerProps> = ({ defaultPromoCode = 'test123' 
   return (
     <div style={{backgroundColor: 'purple', padding: '10px', textAlign: 'center'}}>
       <p style={{color: 'white'}}>
-        Use promo code: <span style={{fontWeight: 'bold', cursor: 'pointer'}} onClick={handleCopy}>{promoCode}</span>
+        Use promo code: <span style={{fontWeight: 'bold', cursor: 'pointer'}} onClick={handleCopy}>
+          {promoCode}
+        </span>
+        {copied && <span style={{marginLeft: '10px', fontSize: '0.8em'}}>(Copied!)</span>}
       </p>
+      <pre style={{ fontSize: '12px', color: '#fff' }}>
+        Received defaultPromoCode: {JSON.stringify(defaultPromoCode)}
+      </pre>
     </div>
   );
 };
